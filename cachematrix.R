@@ -24,7 +24,7 @@ cacheSolve <- function(X, ...)
 if(require("corpcor")){
 	print("corpcor library is loaded")
 	} else {
-		print("need to install corpcor")
+		print("installing corpcor")
 		install.packages("corpcor")
 		if(require(corpcor)){
 			print("corpcor installed and loaded")
@@ -34,10 +34,10 @@ if(require("corpcor")){
 		}
 inverse <- X$getinverse()
 if(!is.null(inverse)){
-	message("matrix is in memory")
+	message("matrix is stored in memory")
 	return(inverse)
 	}
-message("inverse is not in memory so the inverse (if exist) is gonna be computed")
+message("inverse is not in memory")
 data <- X$get()
 inverse <- pseudoinverse(data, ...)
 X$setinverse(inverse)
